@@ -44,7 +44,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.boolean :is_active, null: false, default: "true" # 退会ステータス
 
       t.datetime :created_at, null: false, default: "now" # 登録日時
-      t.datetime :updates_at, null: false, default: "now" # 更新日時
+      t.datetime :updated_at, null: false, default: "now" # 更新日時
 
       t.timestamps null: false
     end
