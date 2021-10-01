@@ -21,8 +21,8 @@
         （税抜き価格）
       </td>
       <td>
-        <%= number_to_currency(@item.price*1.1,:format => "%n%u", :unit => "円", :delimiter => ",") %>
-        (<%= number_to_currency(@item.price, :format => "%n%u", :unit => "円", :delimiter => ",") %>)
+        <%= number_to_currency(@item.price*1.1,:format => "%n%u", :unit => "円", :delimiter => ",", :precision => 0) %>
+        (<%= number_to_currency(@item.price, :format => "%n%u", :unit => "円", :delimiter => ",", :precision => 0) %>)
       </td>
     </tr>
     <tr>
@@ -35,3 +35,5 @@
     </tr>
   </tbody>
 </table>
+
+<%= link_to "編集する", edit_admin_item_path(@item.id),class: "btn w-25 btn-success" %>
