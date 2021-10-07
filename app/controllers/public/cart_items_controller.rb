@@ -1,4 +1,16 @@
 class Public::CartItemsController < ApplicationController
   def index
   end
+  
+  def upda
+  end
+  
+  def destroy
+  end
+  
+  def destroy_all
+  end
+  
+  def create
+  end
 end

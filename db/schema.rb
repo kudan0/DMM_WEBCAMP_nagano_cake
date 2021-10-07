@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_09_26_084102) do
     t.string "first_name_kana", default: "", null: false
     t.string "postal_code", default: "", null: false
     t.string "address", default: "", null: false
-    t.string "telep_number", default: "", null: false
+    t.string "telephone_number", default: "", null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

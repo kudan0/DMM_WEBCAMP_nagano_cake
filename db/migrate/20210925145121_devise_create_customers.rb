@@ -39,7 +39,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :first_name_kana,              null: false, default: ""
       t.string :postal_code,              null: false, default: ""
       t.string :address,              null: false, default: ""
-      t.string :telep_number,              null: false, default: ""
+      t.string :telephone_number,              null: false, default: ""
 
       t.boolean :is_active, null: false, default: "true" # 退会ステータス
 
