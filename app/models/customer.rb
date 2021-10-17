@@ -9,6 +9,14 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   enum is_active: { Available: true,  Invalid: false } #Available:有効  Invalid:退会
-  
-    
+
+  validates :last_name,  presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana,  presence: true
+  validates :first_name_kana, presence: true
+  validates :email, presence: true
+  validates :postcode,  presence: true
+  validates :address, presence: true
+  validates :telephone_number, presence: true
+
 end

@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer = Customer.find(current_customer.id)
     @customer.update(is_active: "false")
-    redirect_to customer_root_path
+    redirect_to _root_path
   end
 
   private

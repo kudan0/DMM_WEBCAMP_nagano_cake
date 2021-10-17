@@ -1,1 +1,72 @@
-<h2>**さんの会員情報編集</h2>
+<div class="container my-4">
+
+  <div class="row">
+    <div class="col-md-8 col-xs-offset-1">
+      <h3 class="mt-2"><%= @customer.last_name + @customer.first_name %>さんの会員詳細</h3>
+    </div>
+  </div>
+
+  <%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
+  <%= render 'shaerd/error_messages', object: f.object %>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-borderless">
+        <tr>
+          <th>会員ID</th>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <th style="width:60px"><%= f.label :氏名 %></th>
+          <td class="d-flex">
+            <%= f.text_field :last_name, class:"form-control mr-3" %>
+            <%= f.text_field :first_name, class:"form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th><%= f.label :フリガナ %></th>
+          <td class="d-flex">
+            <%= f.text_field :last_name_kana, class:"form-control mr-3" %>
+            <%= f.text_field :first_name_kana, class:"form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <th><%= f.label :郵便番号 %></th>
+          <td><%= f.text_field :postcode, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :住所 %></th>
+          <td><%= f.text_field :address, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :電話番号 %></th>
+          <td><%= f.text_field :telephone_number, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :メールアドレス %></th>
+          <td><%= f.text_field :email , class:"form-control"%></td>
+        </tr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <tr class="form-group form-inline d-flex flex-nowrap">
+          <th class="form-group form-inline mr-5">会員ステータス</th>
+          <td class="p-0 form-group form-inline ml-5">
+          　<%= f.radio_button :is_deleted, :false %>
+          　<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+          　<%= f.radio_button :is_deleted, :true %>
+          　<%= f.label :is_active, "退会", {value: :true, style: "display: inline-block;"} %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </td>
+        </tr>
+      </div>
+    </div>
+    </table>
+
+<% end %>
+</div>

@@ -1,12 +1,19 @@
-<h3>ジャンル編集</h3>
-
-<%= form_with model:[:admin,@genre], local:true do |f| %>
-  <div class="form-group">
-    <label for="genre">ジャンル名</label>
-    <%= f.text_field:name, autofocus: true, placeholder:"name" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "変更を保存", class: "btn btn-secondary" %>
-  </div>
-<% end %>
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h3 class="mt-2">ジャンル編集</h3>
+            <%= form_with model: [:admin, @genre], local: true do |f| %>
+            <%= render 'shaerd/error_messages', object: f.object %>
+            <table class="mt-3 mb-3">
+              <thead>
+                <tr>
+                  <th>ジャンル名</th>
+                  <th><%= f.text_field :name %></th>
+                  <th><%= f.submit "変更を保存", class:"btn  btn-sm btn-success" %></th>
+                </tr>
+              </thead>
+            </table>
+            <% end %>
+        </div>
+    </div>
+</div>
