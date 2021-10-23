@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :image_id, null: false # 商品画像id
       t.text :introduction, null: false # 商品説明文
       t.integer :price, null: false # 税抜き価格
-      t.boolean :is_activ, null: false, default: "true" # 販売ステータス
+      t.boolean :is_active, null: false, default: "true" # 販売ステータス
       t.datetime :created_at, null: false, default: "now" # 登録日時
       t.datetime :updated_at, null: false, default: "now" # 更新日時
 

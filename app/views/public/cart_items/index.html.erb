@@ -1,0 +1,40 @@
+<h3>ショッピングカート</h3>
+
+<!--カートを空にする-->
+
+<table>
+  <thead>
+    <tr>
+      <th>商品一覧</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th></th>
+    </tr>
+  </thead>
+    <%= @cart_items.each do |cart_item| %>
+    <tbody>
+      <tr>
+        <td><%= cart_item.item.image %><%= @item.name %></td>
+        <td><%= (cart_item.item.price*1.1) %></td>
+        <td>
+          <%= from_with model: @cart_item, url:public_cart_item_path(cart_item), method: patch, local: true do |f| %>
+            <%= f.select :amount, options_for_select(*[1..10], selected: cart_item.amount) %>
+            <%= f.submit "変更する" %>
+          <% end %>
+        </td>
+        <td></td>
+        <td><%= link_to "削除する" public_cart_item_path(cart_item.id), method: :deleate %></td>
+      </tr>
+    </tbody>
+    <% end %>
+</table>
+
+<%= link_to "買い物を続ける", public_root_path %>
+
+<table>
+  <tr>
+    <th>合計金額</th>
+    <td><%= (@cart_item.amount*@cart_item.item.price*1.1) %></td>
+  </tr>
+</table>

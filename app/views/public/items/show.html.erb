@@ -1,0 +1,15 @@
+<div>
+  <%= attachment_image_tag @item, :image, size: "250x200" %>
+</div>
+
+<div><%= @item.name %></div>
+<div><%= @item.introduction %></div>
+<div>￥<%= (@item.price * 1.1).round %>（税込）</div>
+
+<div>
+  <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+    <%= f.select :amount, *[1..10] %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
+</div>
