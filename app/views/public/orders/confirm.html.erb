@@ -62,10 +62,10 @@
       <table class="table-light table table-hover">
           <thead class="thead-light">
               <tr>
-                  <th>お支払い方法</th><td><%= @order.pay_type %></td>
+                  <th>お支払い方法</th><td><%= @order.payment_method %></td>
               </tr>
               <tr>
-                  <th>お届け先</th><td>〒<%= @order.postcode %><%= @order.address %><%= @order.name %></td>
+                  <th>お届け先</th><td>〒<%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
               </tr>
           </thead>
       </table>
@@ -74,8 +74,8 @@
     <div class ="row">
       <div class="mx-auto">
         <%= form_with model: @order, url: orders_path, local: true do |f| %>
-          <%= f.hidden_field :pay_type, :value => @order.pay_type %>
-          <%= f.hidden_field :postcode, :value => @order.postcode %>
+          <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+          <%= f.hidden_field :postal_code, :value => @order.postal_code %>
           <%= f.hidden_field :address, :value => @order.address %>
           <%= f.hidden_field :name, :value => @order.name %>
           <%= f.hidden_field :total_price, :value => @order.total_price %>

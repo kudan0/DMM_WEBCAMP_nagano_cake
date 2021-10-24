@@ -25,31 +25,31 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.buy_status = 0
     @order.shipping_cost = 800
-    @order.pay_type = params[:order][:pay_type]
+    @order.payment_method = params[:order][:payment_method]
 
     @order_address = params[:order][:address_option]
 
     if @order_address == "1"
 
-     @order.postcode = current_customer.postcode
+     @order.postal_code = current_customer.postal_code
      @order.address = current_customer.address
      @order.name = current_customer.last_name + current_customer.first_name
 
     elsif @order_address == "2"
 
      @address = Address.find(params[:order][:address_id])
-     @order.postcode =  @address.postcode
+     @order.postal_code =  @address.postal_code
      @order.address =  @address.address
      @order.name = @address.name
 
     elsif @order_address == "3"
 
-     @order.postcode = params[:order][:postcode]
+     @order.postal_code = params[:order][:postal_code]
      @order.address = params[:order][:address]
      @order.name = params[:order][:name]
 
      @address = current_customer.addresses.new
-     @address.postcode = params[:order][:postcode]
+     @address.postal_code = params[:order][:postal_code]
      @address.address = params[:order][:address]
      @address.name = params[:order][:name]
       if @address.save
@@ -98,7 +98,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:pay_type, :address, :postcode, :name, :total_price )
+    params.require(:order).permit(:payment_method, :address, :postal_code, :name, :total_price )
   end
 
 end

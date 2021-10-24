@@ -11,14 +11,14 @@
         <tr>
           <td class="col-xs-2 table-secondary">配送先</td>
           <td>
-            〒<%= @order.postcode %></ br>
+            〒<%= @order.postal_code %></ br>
               <%= @order.address %></ br>
               <%= @order.name %></ br>
           </td>
         </tr>
         <tr>
           <td class="col-xs-2 table-secondary">支払い方法</td>
-          <td><%= @order.pay_type %></td>
+          <td><%= @order.payment_method %></td>
         </tr>
         <tr>
           <td class="col-xs-2 table-secondary">ステータス</td>

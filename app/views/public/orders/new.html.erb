@@ -12,10 +12,10 @@
     <%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
        <div class="row">
         <div class="col-lg-3 ml-2">
-          <%= f.radio_button :pay_type, :クレジットカード, checked: "checked" %>
-          <%= f.label :クレジットカード, class: "pay_type_label" %><br>
-          <%= f.radio_button :pay_type, :銀行振込 %>
-          <%= f.label :銀行振込, class: "pay_type_label", style: "display: inline-block;" %>
+          <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+          <%= f.label :クレジットカード, class: "payment_method_label" %><br>
+          <%= f.radio_button :payment_method, :銀行振込 %>
+          <%= f.label :銀行振込, class: "payment_method_label", style: "display: inline-block;" %>
         </div>
       </div><br>
 
@@ -30,7 +30,7 @@
       <%= f.radio_button :address_option, 1, checked: "checked" %>
       <%= f.label :"ご自身の住所" %><br>
       <div class="col-lg-3 ml-2">
-      〒<%= current_customer.postcode %><%= current_customer.address %><br>
+      〒<%= current_customer.postal_code %><%= current_customer.address %><br>
       <%= current_customer.last_name %><%= current_customer.first_name %>
       </div><br>
 
@@ -47,7 +47,7 @@
                 <tbody>
                   <tr>
                     <th>郵便番号(ハイフンなし)</th>
-                    <td> <%= f.text_field :postcode, placeholder: "0000000" %></td>
+                    <td> <%= f.text_field :postal_code, placeholder: "0000000" %></td>
                   </tr>
                   <tr>
                     <th>住所</th>
