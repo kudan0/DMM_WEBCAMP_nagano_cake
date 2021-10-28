@@ -6,6 +6,6 @@ class Item < ApplicationRecord
 
    belongs_to :genre
 
-   validates :name, :image, :price, :introspection, presence: true
+   validates :name, :image, :price, :introduction, presence: true
 
 end

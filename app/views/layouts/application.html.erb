@@ -11,17 +11,20 @@
 
   <body>
     <header>
-      <h2>LOGO</h2>
       <nav class="navbar navbar-expand-lg">
       <div class="container">
-        
+        <div class="navbar-brand logo">
+          <%= link_to "/" do %>
+          <%= image_tag 'logo.png' %>
+          <% end %>
+      </div>
         <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <!--カスタマーがログインしている時 -->
             <li class="nav-item mr-5 pt-2">
               ようこそ！<span class="text-success mr-1"><%= current_customer.last_name %><%= current_customer.first_name %></span>さん！！
             </li>
-            <li class="nav-item"><%= link_to " マイページ", customer_path(current_customer), class: 'btn btn-light btn-ms nav-link fas fa-house-user' %></li>
+            <li class="nav-item"><%= link_to " マイページ", customers_mypage_path(current_customer), class: 'btn btn-light btn-ms nav-link fas fa-house-user' %></li>
             <li class="nav-item ml-1"><%= link_to " 商品一覧", items_path, class: 'btn btn-light btn-ms nav-link fas fa-cheese' %></li>
             <li class="nav-item ml-1"><%= link_to " カート", cart_items_path, class: 'btn btn-light btn-ms nav-link fas fa-cart-plus' %></li>
             <li class="nav-item ml-1"><%= link_to " ログアウト", destroy_customer_session_path, method: :delete, class: 'btn btn-light btn-ms nav-link fas fa-sign-out-alt' %></li>

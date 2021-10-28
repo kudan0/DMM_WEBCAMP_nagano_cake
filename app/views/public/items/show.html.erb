@@ -11,16 +11,16 @@
     <%= form_with model: [@item, @cart_item], url:cart_items_path, local: true do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
       <h3><%= @item.name %></h3>
-      <p><%= @item.introspection %></p>
+      <p><%= @item.introduction %></p>
       <table>
         <tr>
-          <td>¥<%= @item.tax_included_price.to_s(:delimited) %>（税込）</td>
+          <td>¥<%= (@item.price*1.1).round.to_s(:delimited) %>（税込）</td>
         </tr>
         <tr>
         <% if @item.is_active == false %>
           <td>売り切れ</td>
         <% else %>
-          <td><%= f.select :quantity, [*(1..10)], { include_blank: '個数選択' } %></td>
+          <td><%= f.select :amount, [*(1..10)], { include_blank: '個数選択' } %></td>
           <td><%= f.submit "カートに入れる", class: 'btn btn-success btn-sm' %></td>
         <% end %>
         </tr>

@@ -1,19 +1,29 @@
 Rails.application.routes.draw do
   scope module: :public do
 
-    get "/" => "homes#top"
+    root to: "homes#top"
     get "/about" => "homes#about"
     # resources :homes, only:[:about]
     resources :items, only:[:index, :show]
     # resources :customers, only:[:confirm, :destroy]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
+    resources :cart_items, only: [:index, :update, :create]
+    resources :orders, only: [:index, :show, :new, :create] do
+      collection do
+        post :confirm
+        get :complete
+
+      end
+    end
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     get "/customers/mypage" => "customers#show"
     get "/customers/mypage/edit" => "customers#edit"
     get "/customers/confirm" => "customers#confirm"
     patch "/customers/mypage" => "customers#update"
     patch "/customers/destroy" => "customers#destroy"
+    delete "/cart_items/destroy_all" => "cart_items#destroy_all"
+    delete "cart_items/:id" => "cart_items#destroy", as: "destroy_cart_item"
+    # post "/orders/confirm" => "orders#confirm"
+    # get "/orders/complete" => "orders#complete"
 
   end
 
@@ -42,7 +52,7 @@ Rails.application.routes.draw do
 
   # 管理側ルーティング
   namespace :admin do
-    get "/" => "homes#top"
+    root to: "homes#top"
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

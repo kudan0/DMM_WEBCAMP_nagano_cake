@@ -22,7 +22,7 @@
         </tr>
         <tr>
           <td class="col-xs-2 table-secondary">ステータス</td>
-          <td><%= @order.buy_status %></td>
+          <td><%= @order.status %></td>
         </tr>
       </table>
     </div>
@@ -31,15 +31,15 @@
       <table class="table-light table table-hover">
         <tr>
           <td class="col-xs-2 table-secondary">商品合計</td>
-          <td>¥<%= (@order.total_price - @order.shipping_cost).to_s(:delimited) %></td>
+          <td>¥<%= (@order.total_methot - @order.postage).to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="col-xs-2 table-secondary">配送料</td>
-          <td>¥<%= @order.shipping_cost.to_s(:delimited) %></td>
+          <td>¥<%= @order.postage.to_s(:delimited) %></td>
         </tr>
         <tr>
           <td class="col-xs-2 table-secondary">ご請求額</td>
-          <td>¥<%= @order.total_price.to_s(:delimited) %></td>
+          <td>¥<%= @order.total_methot.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
@@ -61,9 +61,9 @@
         <tbody>
           <tr>
             <td><%= order_item.item.name %></td>
-            <td>¥<%= order_item.item.tax_included_price.to_s(:delimited) %></td>
-            <td><%= order_item.quantity %></td>
-            <td>¥<%= order_item.subtotal.to_s(:delimited) %></td>
+            <td>¥<%= (order_item.item.price*1.1).round.to_s(:delimited) %></td>
+            <td><%= order_item.amount %></td>
+            <td>¥<%= (order_item.item.price*1.1).round*order_item.amount %></td>
           </tr>
         </tbody>
         <% end %>

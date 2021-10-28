@@ -6,20 +6,19 @@
     </div>
 
   <%= form_with model: @address, local:true do |f| %>
-  <%= render 'shaerd/error_messages', object: f.object %>
   <table class="table-light table">
     <tbody class="thead-light">
       <tr>
         <th>郵便番号(ハイフンなし)</th>
-        <td> <%= f.text_field :postal_code, placeholder: "3808570" %></td>
+        <td> <%= f.text_field :postal_code, placeholder: "1740071" %></td>
       </tr>
       <tr>
         <th>住所</th>
-        <td> <%= f.text_field :address, placeholder: "長野県長野市大字南長野字幅下692-2", :size =>"60" %></td>
+        <td> <%= f.text_field :address, placeholder: "東京都板橋区常盤台4-33-3 浅香ビル201", :size =>"60" %></td>
       </tr>
       <tr>
         <th>宛名</th>
-        <td><%= f.text_field :name, placeholder: "長野太郎" %></td>
+        <td><%= f.text_field :name, placeholder: "中本正" %></td>
         <td><%= f.submit '新規登録', class:"btn btn-sm btn-success" %></td>
       </tr>
     </tbody>

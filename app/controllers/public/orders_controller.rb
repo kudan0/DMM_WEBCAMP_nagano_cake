@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders
+    # @order_item = @order.order_items
   end
 
   def new
@@ -11,6 +12,7 @@ class Public::OrdersController < ApplicationController
   def show
     @orders = current_customer.orders
     @order = Order.find(params[:id])
+    # @order_item = @order.order_items
   end
 
   def confirm
@@ -18,13 +20,13 @@ class Public::OrdersController < ApplicationController
     @sub_total = 0
 
     @cart_items.each do |cart|
-    @sub_total += cart.item.tax_included_price.floor * cart.quantity
+    @sub_total += (cart.item.price*1.1).round * cart.amount
     end
 
     @order = Order.new
     @order.customer_id = current_customer.id
-    @order.buy_status = 0
-    @order.shipping_cost = 800
+    @order.status = 0
+    @order.postage = 800
     @order.payment_method = params[:order][:payment_method]
 
     @order_address = params[:order][:address_option]
@@ -56,7 +58,7 @@ class Public::OrdersController < ApplicationController
         flash[:notice] = "新しい住所が登録されました"
       else
         flash[:alert] = "正しい住所を入力してください"
-        redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: "/")
       end
     end
   end
@@ -64,8 +66,8 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.total_price = @order.cal_price(current_customer)
-    @order.shipping_cost = 800
+    @order.total_methot = @order.cal_price(current_customer)
+    @order.postage = 800
     @order.save
 
     order_details_maker(@order)
@@ -80,25 +82,41 @@ class Public::OrdersController < ApplicationController
 
   def order_details_maker(order)
 
-    cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items
 
-    cart_items.each do |cart_item|
-      order_items = OrderItem.new
+    @cart_items.each do |cart_item|
+      @order_items = OrderItem.new
 
-      order_items.item_id = cart_item.item_id
-      order_items.order_id = order.id
-      order_items.quantity = cart_item.quantity
-      order_items.make_status = 0
-      order_items.price = cart_item.item.price
-      order_items.save
+      @order_items.item_id = cart_item.item_id
+      @order_items.order_id = order.id
+      @order_items.amount = cart_item.amount
+      @order_items.making_status = 0
+      @order_items.item.price = cart_item.item.price
+      @order_items.save
     end
 
-    cart_items.destroy_all
+    @cart_items.destroy_all
 
   end
 
   def order_params
-    params.require(:order).permit(:payment_method, :address, :postal_code, :name, :total_price )
+    params.require(:order).permit(:payment_method, :address, :postal_code, :name, :total_methot )
+  end
+
+  def order_detail_params
+    params.require(:order_detail).permit(
+      :order_id,
+      :item_id,
+      :price,
+      :amount,
+      :making_status)
+  end
+  def address_params
+    params.require(:address).permit(
+      :customer_id,
+      :name,
+      :address,
+      :postal_code)
   end
 
 end
