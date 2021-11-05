@@ -18,3 +18,130 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.container{
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.about {
+  text-align: center;
+}
+
+.about-title {
+  font-size: 80px;
+}
+
+// .main-visual {
+//   width: 100%;
+//   height: 400px;
+//   margin-top: 40px;
+//   background-image: url(cake.jpeg);
+//   background-size: cover;
+//   background-position: center;
+// }
+
+
+// .main-visual-content {
+//   display: none;
+//   width: 100%;
+//   height: 500px;
+//   color: white;
+//   text-align: center;
+//   padding-top: 80px;
+//   background-color: rgba(0, 0, 0, 0.3);
+// }
+
+.font_test {
+  font-size: 20px;
+  font-family: 'BioRhyme Expanded', serif;
+}
+
+.btn-animation-02 {
+  display: inline-block;
+  width: 190px;
+  text-align: center;
+  background-color: #F08080;
+  border: 2px solid #F08080;
+  font-size: 12px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 3px 24px;
+  border-radius: 4px;
+  position: relative;
+}
+
+.btn-animation-02 span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-animation-02::before,
+.btn-animation-02::after {
+  content: "";
+  display: block;
+  background-color: #FFE4E1;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: .2s;
+}
+.btn-animation-02::before {
+  left: 0;
+}
+.btn-animation-02::after {
+  right: 0;
+}
+
+.btn-animation-02:hover:before,
+.btn-animation-02:hover:after {
+  width: 0;
+  background-color: #FFF;
+}
+
+.btn-animation-02:hover {
+  color: #FFF;
+}
+
+.text-genre {
+  font-size: 35px;
+}
+
+.btn-light {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.margin {
+  margin-bottom: 0px;
+}
+
+.text-top {
+  font-size: 50px;
+}
+
+.image-link {
+  border: 1px solid #ddd;
+  width: 200px;
+  height: 150px;
+  margin: 20px auto 0;
+  transition-duration: 0.5s;
+  width: 100%;
+  cursor: pointer;
+}
+
+.image-link:hover {
+  box-shadow: 20px 20px 20px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
+}
+
+
+
+.table-light {
+  opacity: 0.9;
+}
+
+.page-link {
+  opacity: 0.8;
+}

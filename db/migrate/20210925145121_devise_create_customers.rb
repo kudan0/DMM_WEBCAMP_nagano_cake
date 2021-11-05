@@ -33,18 +33,18 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       #新規会員登録時入力
-      t.string :last_name,              null: false, default: ""
-      t.string :first_name,              null: false, default: ""
-      t.string :last_name_kana,              null: false, default: ""
-      t.string :first_name_kana,              null: false, default: ""
-      t.string :postal_code,              null: false, default: ""
-      t.string :address,              null: false, default: ""
-      t.string :telephone_number,              null: false, default: ""
+      t.string :last_name,              null: false
+      t.string :first_name,              null: false
+      t.string :last_name_kana,              null: false
+      t.string :first_name_kana,              null: false
+      t.string :postal_code,              null: false
+      t.string :address,              null: false
+      t.string :telephone_number,              null: false
 
       t.boolean :is_active, null: false, default: "true" # 退会ステータス
 
-      t.datetime :created_at, null: false, default: "now" # 登録日時
-      t.datetime :updated_at, null: false, default: "now" # 更新日時
+      # t.datetime :created_at, null: false, default: "now" # 登録日時
+      # t.datetime :updated_at, null: false, default: "now" # 更新日時
 
       t.timestamps null: false
     end

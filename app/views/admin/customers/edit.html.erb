@@ -7,7 +7,6 @@
   </div>
 
   <%= form_with model: @customer, url: admin_customer_path(@customer), local: true do |f| %>
-  <%= render 'shaerd/error_messages', object: f.object %>
   <div class="row">
     <div class="col-md-8">
       <table class="table table-borderless">
@@ -31,7 +30,7 @@
         </tr>
         <tr>
           <th><%= f.label :郵便番号 %></th>
-          <td><%= f.text_field :postcode, class:"form-control" %></td>
+          <td><%= f.text_field :postal_code, class:"form-control" %></td>
         </tr>
         <tr>
           <th><%= f.label :住所 %></th>
@@ -53,10 +52,10 @@
         <tr class="form-group form-inline d-flex flex-nowrap">
           <th class="form-group form-inline mr-5">会員ステータス</th>
           <td class="p-0 form-group form-inline ml-5">
-          　<%= f.radio_button :is_deleted, :false %>
-          　<%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
-          　<%= f.radio_button :is_deleted, :true %>
-          　<%= f.label :is_active, "退会", {value: :true, style: "display: inline-block;"} %>
+          　<%= f.radio_button :is_active, :true %>
+          　<%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+          　<%= f.radio_button :is_active, :false %>
+          　<%= f.label :is_active, "退会", {value: :false, style: "display: inline-block;"} %>
           </td>
         </tr>
         <tr>
